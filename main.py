@@ -22,3 +22,10 @@ def imprimir_cartela(cartela, numeros_sorteados, modo):
     for linha in zip(*cartela):
         print(" | ".join(f"({num:02})" if num in numeros_sorteados else f" {num:02} " for num in sum(linha, [])))
     print("-" * qtd)
+
+def sortear_numeros(modo):
+    if modo == 'demorado':
+        intervalo = 40
+    else:
+        intervalo = 30
+    return random.sample(range(1, intervalo + 1), intervalo)
