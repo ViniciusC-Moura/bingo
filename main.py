@@ -4,14 +4,12 @@ import random
 
 def gerar_cartela(modo):
     if modo == 'rápido':
-        return [[random.sample(range(1, 11), 2),
-                 random.sample(range(11, 21), 2),   
-                 random.sample(range(21, 31), 2)]]
+        return [[random.sample(range(1, 21), 3),
+                 random.sample(range(21, 31), 3)]]
     else:  # modo demorado
-        return [[random.sample(range(1, 11), 3),
-                 random.sample(range(11, 21), 3),
-                 random.sample(range(21, 31), 3),
-                 random.sample(range(31, 41), 3)]]
+        return [[random.sample(range(1, 21), 4),
+                 random.sample(range(21, 31), 4),
+                 random.sample(range(31, 41), 4)]]
 
 def imprimir_cartela(cartela, numeros_sorteados, modo):
     if modo == 'rápido':
@@ -29,3 +27,11 @@ def sortear_numeros(modo):
     else:
         intervalo = 30
     return random.sample(range(1, intervalo + 1), intervalo)
+
+def verificar_ganhadores(cartelas, numeros_sorteados):
+    vencedores = []
+    for i, cartela in enumerate(cartelas):
+        numeros_cartela = set(sum(sum(cartela, []), []))
+        if numeros_cartela.issubset(numeros_sorteados):
+            vencedores.append(i + 1)
+    return vencedores if vencedores else None
