@@ -71,9 +71,6 @@ def bingo():
 
     cartelas = [gerar_cartela() for _ in range(num_jogadores)]
 
-    print(cartelas)
-
-
     print("\nCartelas geradas:")
     for i, cartela in enumerate(cartelas):
         print(f"Jogador {i+1}:")
